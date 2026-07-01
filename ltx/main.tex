@@ -515,7 +515,7 @@ b) Numerical evaluation of $D_h(x,0)$ using equation~(\ref{eq:anypandq0}), and t
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Benchmarking against published data}
+\subsection{Benchmarking against our published data}
 \label{sec:banckmarking}
 We first tested our code with the calculations shown in the figures of \cite{GuigayFerrero2016}. These examples use a Si111 crystal \SI{1}{\milli\meter} thick at \SI{80}{\kilo\eV} bent to $R=$\SI{2}{\meter} for different asymmetry angles and source position ($p=0$ for Fig. 2 and $p=$\SI{20}{\meter} in Fig. 3). Our results agree very well both in the $q$-scan (longitudinal) and the $x$-scan (transversal) at the focal position(s) (see Fig.~\ref{fig:GF2026figs23}). As a quantitative example, for the source at $p=$\SI{20}{\meter} and $\alpha=0.75^\circ$ (green curve in Fig.~\ref{fig:GF2026figs23}d) we obtain a focus at $q\approx$\SI{820}{\milli\meter} with a width FWHM$\approx$\SI{0.25}{\milli\meter}, in good agreement with the values of \SI{823.5}{\milli\meter} and \SI{0.23}{\milli\meter} reported in \cite{GuigayFerrero2016}.
 
@@ -605,6 +605,49 @@ d) source at $p=$\SI{50}{\meter}, $R=$\SI{1}{\meter}, photon energy \SI{17}{\kil
 \includegraphics[width=0.45\textwidth]{figures/GSdR2022_fig5b.png}
 \end{figure}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Benchmarking against Nesterets published data}
+\label{sec:nesterets}
+As a final test we reproduce the wave-optical calculations of \cite{Nesterets2008}, who studied the focusing performance of bent Laue crystals. 
+Unlike the benchmarks above --- based on one-dimensional central-intensity ($q$-scans) or focal-profile curves --- the figures of \cite{Nesterets2008} are two-dimensional intensity maps, both of the wavefield \emph{inside} the crystal and of its free-space propagation downstream.
+The calculations of this section use the parameters of \cite{Nesterets2008}: a Si~111 crystal \SI{1}{\milli\meter} thick at \SI{80}{\kilo\eV} ($\theta_B=1.4161^\circ$), with a point source at $p=\SI{20}{\meter}$.
+
+Figure~\ref{fig:NW2008fig2} reproduces their Fig.~2: the reflected wavefield \emph{inside} the crystal, in the diffraction plane $(x,z)$, for a plane crystal ($R=\infty$) and for cylindrical bending radii $R=6,4,2$ and \SI{1}{\meter} (asymmetry angle $\alpha=0$).
+% The compact single-integral expressions of Appendix~\ref{app:singleintegral} 
+Equation~\ref{eq:anypandq0} give the field at the exit surface of a crystal of a given thickness; we obtain the internal map by evaluating the exit-surface field for a crystal truncated at thickness $t=z$, scanning $z$ from $0$ to \SI{1}{\milli\meter}.
+For the plane crystal the field spreads over the Borrmann triangle with the characteristic \emph{Pendell\"osung} fringes; as the bending radius decreases the wavefield is progressively deflected and concentrated towards one side, forming a converging structure near the exit surface. The maps agree with those of \cite{Nesterets2008} in the position and spacing of the fringes and in the width of the intensity distribution.
+
+\begin{figure}
+\caption{Diffracted wavefield inside the crystal, reproducing Fig.~2 of \cite{Nesterets2008}: Si~111, \SI{1}{\milli\meter} thick, $E=\SI{80}{\kilo\eV}$, point source at $p=\SI{20}{\meter}$, asymmetry $\alpha=0$. Panels: (a) plane crystal $R=\infty$; (b--e) cylindrically bent to $R=6,4,2$ and \SI{1}{\meter}. The depth axis $z$ (from the entrance to the exit face) points downwards.
+}
+\label{fig:NW2008fig2}
+\includegraphics[width=0.9\textwidth]{figures/NW2008_fig2_all.png}
+\end{figure}
+
+
+Figure~\ref{fig:NW2008fig3} reproduces their Fig.~3: the transverse intensity profile as a function of the crystal-to-detector distance $z_d$ obtained by free-space propagation of the exit field, for the same set of bending radii. The range of $q$ is different for each panel, following \cite{Nesterets2008}: $[0,20]$, $[0,9]$, $[0,6]$, $[0,3]$ and $[0,1.5]$\,\si{\meter} for $R=\infty,6,4,2,1$\,\si{\meter}.
+The white horizontal line in each panel marks the geometrical focus $q_\text{geom}=\gamma_h\,pR/(\gamma_0 R+2p)$ [equation~(5) of \cite{Nesterets2008}], equal to $2.608$, $1.818$, $0.952$ and \SI{0.488}{\meter} for $R=6,4,2$ and \SI{1}{\meter} respectively (Table~1 of \cite{Nesterets2008}).
+As reported there, the plane crystal shows no focusing (the beam only diverges), whereas each bent crystal produces a diffraction focus. For $R=\SI{6}{\meter}$ the diffraction focus nearly coincides with the geometrical one, while for smaller radii it lies at a distinctly larger distance from the crystal than the geometrical focus --- exactly the behaviour described in \cite{Nesterets2008}.
+
+\begin{figure}
+\caption{Transverse intensity profiles versus crystal-to-detector distance $q$ (free-space propagation of the exit field), reproducing Fig.~3 of \cite{Nesterets2008}; same parameters as Fig.~\ref{fig:NW2008fig2}. Panels: (a) $R=\infty$, $z_d\in[0,20]\,\si{\meter}$; (b--e) $R=6,4,2,1$\,\si{\meter} with $z_d\in[0,9],[0,6],[0,3],[0,1.5]\,\si{\meter}$. The white horizontal line marks the geometrical focus $q_\text{geom}$ (Table~1 of \cite{Nesterets2008}). The propagation axis $z_d$ points downwards.
+}
+\label{fig:NW2008fig3}
+\includegraphics[width=0.9\textwidth]{figures/NW2008_fig3_all.png}
+\end{figure}
+
+
+Finally, Fig.~\ref{fig:NW2008fig5} reproduces their Fig.~5, which fixes $R=\SI{2}{\meter}$ and varies the crystal asymmetry angle, $\alpha=-0.5^\circ,0^\circ,0.5^\circ$ and $1.0^\circ$, propagating over $q\in[0,3]\,\si{\meter}$. The white line marks the geometrical focus $q_\text{geom}=\SI{0.952}{\meter}$, common to all panels.
+The asymmetry angle tunes the position of the diffraction focus: negative $\alpha$ pushes it to larger distances and positive $\alpha$ brings it closer to the crystal, so that the diffraction and geometrical foci coincide for an intermediate value $\alpha\approx0.7^\circ$. Our maps reproduce this trend and the location of the focus in each panel, in agreement with \cite{Nesterets2008}.
+
+\begin{figure}
+\caption{Transverse intensity profiles versus crystal-to-detector distance $q\in[0,3]\,\si{\meter}$ for a bent crystal with $R=\SI{2}{\meter}$ and different asymmetry angles, reproducing Fig.~5 of \cite{Nesterets2008}; other parameters as in Fig.~\ref{fig:NW2008fig2}. Panels: (a) $\alpha=-0.5^\circ$; (b) $0^\circ$; (c) $0.5^\circ$; (d) $1.0^\circ$. The white horizontal line marks the geometrical focus $q_\text{geom}=\SI{0.952}{\meter}$. The propagation axis $z_d$ points downwards.
+}
+\label{fig:NW2008fig5}
+\includegraphics[width=0.9\textwidth]{figures/NW2008_fig5_all.png}
+\end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -854,3 +897,5 @@ which is the compact form of equation~(\ref{eq:anypandanyq}). The special case o
 
 \end{document}                    % DO NOT DELETE THIS LINE
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
